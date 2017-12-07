@@ -3,12 +3,12 @@
 // @namespace    https://www.packtpub.com/
 // @version      1.0
 // @description  add link to download all ebooks from personal packpub library automaticly.
+// @supportURL   https://github.com/itc-ger/packtpub-mass-downloader/issues
 // @author       Dirk Osburg
 // @match        https://www.packtpub.com/account/my-ebooks*
 // @grant        GM_download
 // @run-at       document-idle
 // ==/UserScript==
-
 
 /*
 todo:
