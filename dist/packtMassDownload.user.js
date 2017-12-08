@@ -2,7 +2,7 @@
 // @name         PacktPub Downloader
 // @namespace    https://www.packtpub.com/
 // @version      1.1
-// @description  add link to download all ebooks from personal packpub library automaticly.
+// @description  Mass downloader to get all ebooks from personal Packt Publishing Limited library automatically.
 // @supportURL   https://github.com/itc-ger/packtpub-mass-downloader/issues
 // @license      MIT
 // @contributionURL https://flattr.com/@dmo84
@@ -59,24 +59,6 @@ todo:
 
         var style = document.createElement('style');
 
-        /*
-
-  from {opacity: 1.0;}
-  to {opacity: 0.0;}
-}
-.blink{
-	text-decoration: blink;
-	-webkit-animation-name: blinker;
-	-webkit-animation-duration: 0.6s;
-	-webkit-animation-iteration-count:infinite;
-	-webkit-animation-timing-function:ease-in-out;
-	-webkit-animation-direction: alternate;
-}
-
-!important
-
-
-        */
         style.type = 'text/css';
         style.innerHTML = '@-webkit-keyframes blinker-abort { from {opacity: 1.0;} to {opacity: 0.0;} } ' +
             '@-webkit-keyframes blinker-downloading { from {color: #060;} to {color: #0D0;} }' +
@@ -293,11 +275,14 @@ todo:
             if(linkType in typeFilter && typeFilter[linkType] !== TYPE_MASK_NONE){
                 console.debug("typeFilter ("+linkType+"): " + typeFilter[linkType].toString(16));
                 downloadBook(title + "." + linkType, linkHref);
+
                 console.debug("%c[iterateDownloadLinks]yield","color:#AAA; font-style:italic");
                 abort = yield i++;
             } else if (linkType == "code files" && typeFilter.code !== TYPE_MASK_NONE) {
                 console.debug("typeFilter ("+linkType+"): " + typeFilter.code.toString(16));
                 downloadBook(title + ".zip", linkHref);
+
+                console.debug("%c[iterateDownloadLinks]yield","color:#AAA; font-style:italic");
                 abort = yield i++;
             } else {
                 console.debug("skipping fileType: " + linkType);
