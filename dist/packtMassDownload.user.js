@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PacktPub Downloader
 // @namespace    https://www.packtpub.com/
-// @version      1.1
+// @version      1.2
 // @description  Mass downloader to get all ebooks from personal Packt Publishing Limited library automatically.
 // @supportURL   https://github.com/itc-ger/packtpub-mass-downloader/issues
 // @license      MIT
@@ -230,6 +230,7 @@ todo:
 
     /* wrapper for Tampermonkeys download function */
     function downloadBook(filename, href) {
+        filename = filename.replace(/[<>:"\/\\|?*]+/g, '-');
         console.info("downloading: %c" + filename,"color:#FFF; background-color:#060; font-weight:bold");
         var retVal = GM_download({url:href, name:filename, saveAs:false, onload:downloadFinishHandler, onerror:downloadErrorHandler});
     }
